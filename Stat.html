@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatSense</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+    <div class="stackedit__html">
+        <h1 id="statsense-lecture-notes-modules-1–6">StatSENSE: Lecture Notes (Modules 1–6)</h1>
+        <h2 id="module-1-introduction-to-statistics">MODULE 1: Introduction to Statistics</h2>
+        <h3 id="definition--overview">1. Definition &amp; Overview</h3>
+        <ul>
+            <li>
+                <p><strong>Statistics:</strong> The scientific discipline concerned with the collection, organization, analysis, and interpretation of data.</p>
+            </li>
+            <li>
+                <p><strong>The 4 Phases of Statistics:</strong></p>
+                <ol>
+                    <li>
+                        <p><strong>Collection:</strong> Gathering raw data (e.g., surveys, experiments, observations).</p>
+                    </li>
+                    <li>
+                        <p><strong>Presentation:</strong> Organizing data into tables, graphs, or charts to make it readable.</p>
+                    </li>
+                    <li>
+                        <p><strong>Analysis:</strong> Extracting relevant trends, patterns, and significant information.</p>
+                    </li>
+                    <li>
+                        <p><strong>Interpretation:</strong> Drawing conclusions and making decisions based on the analysis.</p>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+        <h3 id="the-two-main-branches">2. The Two Main Branches</h3>
+        <ul>
+            <li>
+                <p><strong>Descriptive Statistics:</strong></p>
+                <ul>
+                    <li>
+                        <p>Organizes, summarizes, and displays data.</p>
+                    </li>
+                    <li>
+                        <p><em>Focus:</em> What <em>is</em> happening? (e.g., Average score, most popular choice).</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Inferential Statistics:</strong></p>
+                <ul>
+                    <li>
+                        <p>Uses sample data to draw conclusions or predictions about a larger population.</p>
+                    </li>
+                    <li>
+                        <p><em>Focus:</em> What <em>might</em> happen? (e.g., Predicting election results based on a poll).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3 id="types-of-data">3. Types of Data</h3>
+        <ul>
+            <li>
+                <p><strong>Categorical (Qualitative):</strong> Describes qualities or characteristics.</p>
+                <ul>
+                    <li><em>Examples:</em> Sex, Religion, Brand preference, Yes/No.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Numerical (Quantitative):</strong> Describes quantities (numbers).</p>
+                <ul>
+                    <li>
+                        <p><strong>Discrete:</strong> Countable whole numbers (e.g., Number of children, Absences).</p>
+                    </li>
+                    <li>
+                        <p><strong>Continuous:</strong> Measurable values that can have decimals (e.g., Height, Weight, Temperature).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3 id="levels-of-measurement-noir">4. Levels of Measurement (NOIR)</h3>
+        <ol>
+            <li>
+                <p><strong>Nominal:</strong> Names/Labels only. No inherent order. (e.g., Gender, Blood Type).</p>
+            </li>
+            <li>
+                <p><strong>Ordinal:</strong> Names + Order/Rank matters. (e.g., Likert Scale, 1st/2nd/3rd place).</p>
+            </li>
+            <li>
+                <p><strong>Interval:</strong> Order + Equal Intervals. <strong>No absolute zero.</strong> (e.g., Temperature in Celsius—0°C does not mean “no heat”).</p>
+            </li>
+            <li>
+                <p><strong>Ratio:</strong> Order + Intervals + <strong>Absolute Zero</strong> exists. (e.g., Height, Weight, Money—0 means none).</p>
+            </li>
+        </ol>
+        <h2 id="module-2-statistical-assumptions">MODULE 2: Statistical Assumptions</h2>
+        <p><em>Before choosing a statistical test, you must analyze the nature of your data.</em></p>
+        <h3 id="key-assumptions">1. Key Assumptions</h3>
+        <ul>
+            <li>
+                <p>Normality: Data should follow a symmetrical Normal Distribution (Bell Curve).</p>
+                <p><img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS71fL2UC_XwmHKaKUTcGzOo552E86tFzDhy_AwT2w36q2v730h18aWZMEyqwhcA9TIlN37IkRNQ-uVsQ6zunEZN1OqWvy-QkUJqOI7aZk2RcNOpvc" alt="Image of standard normal distribution bell curve"></p>
+                <ul>
+                    <li><em>Tests:</em> Shapiro-Wilk, Kolmogorov-Smirnov.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Homoscedasticity:</strong> The variance (spread) between groups being compared must be equal.</p>
+                <ul>
+                    <li><em>Test:</em> Levene’s Test.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Independence:</strong> Observations in one group should not influence the other (unless using paired samples).</p>
+            </li>
+        </ul>
+        <h3 id="choosing-the-right-test">2. Choosing the Right Test</h3>
+        <ul>
+            <li>
+                <p><strong>Parametric Tests:</strong></p>
+                <ul>
+                    <li>
+                        <p><strong>Use when:</strong> Data is <strong>Normal</strong> and assumptions are met.</p>
+                    </li>
+                    <li>
+                        <p><em>Characteristics:</em> More powerful, stricter rules.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Non-Parametric Tests:</strong></p>
+                <ul>
+                    <li>
+                        <p><strong>Use when:</strong> Data is <strong>NOT Normal</strong> (Skewed) or assumptions are violated.</p>
+                    </li>
+                    <li>
+                        <p><em>Characteristics:</em> Robust to outliers, less strict (“Safe fallback”).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="module-3-data-organization--presentation">MODULE 3: Data Organization &amp; Presentation</h2>
+        <h3 id="ways-to-organize-data">1. Ways to Organize Data</h3>
+        <ul>
+            <li>
+                <p><strong>Array:</strong> Arranging raw numerical data in ascending or descending order.</p>
+            </li>
+            <li>
+                <p><strong>Stem-and-Leaf Diagram:</strong> Displays data by separating the leading digit (stem) from the trailing digit (leaf). Preserves individual values.</p>
+            </li>
+            <li>
+                <p><strong>Frequency Distribution Table (FDT):</strong> Groups large datasets into specific <strong>Class Intervals</strong> to show how often values occur.</p>
+            </li>
+        </ul>
+        <p>Formula for Class Interval (Sturges’ Rule):</p>
+        <p>To determine the approximate size of class intervals (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span style="margin-right: 0.07153em;" class="mord mathnormal">C</span><span style="margin-right: 0.07847em;" class="mord mathnormal">I</span></span>
+            </span>
+            </span>
+            </span>) or the number of classes (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathnormal">k</span></span>
+            </span>
+            </span>
+            </span>):</p>
+        <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>3.322</mn><mi>log</mi><mo>⁡</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">k = 1 + 3.322 \log N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathnormal">k</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord">3.322</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span style="margin-right: 0.10903em;" class="mord mathnormal">N</span></span>
+            </span>
+            </span>
+            </span>
+            </span>
+        </p>
+        <p>(Where <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span style="margin-right: 0.10903em;" class="mord mathnormal">N</span></span>
+            </span>
+            </span>
+            </span> is the total number of observations)</p>
+        <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>I</mi><mo>=</mo><mfrac><mtext>Range</mtext><mi>k</mi></mfrac></mrow><annotation encoding="application/x-tex">CI = \frac{\text{Range}}{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span style="margin-right: 0.07153em;" class="mord mathnormal">C</span><span style="margin-right: 0.07847em;" class="mord mathnormal">I</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.04633em; vertical-align: -0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.36033em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span style="margin-right: 0.03148em;" class="mord mathnormal">k</span></span>
+            </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">Range</span></span>
+            </span>
+            </span>
+            </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span>
+            </span>
+            </span>
+            </span><span class="mclose nulldelimiter"></span></span>
+            </span>
+            </span>
+            </span>
+            </span>
+            </span>
+        </p>
+        <h3 id="ways-to-present-data">2. Ways to Present Data</h3>
+        <ul>
+            <li>
+                <p><strong>Textual Presentation:</strong> Uses paragraphs/sentences to explain data (Narrative report).</p>
+            </li>
+            <li>
+                <p><strong>Tabular Presentation:</strong> Uses rows and columns for precise data lookup.</p>
+            </li>
+            <li>
+                <p><strong>Graphical (Visual) Presentation:</strong></p>
+                <ul>
+                    <li>
+                        <p><strong>Bar Graph:</strong> Comparing quantities across different categories (Discrete data).</p>
+                    </li>
+                    <li>
+                        <p><strong>Line Graph:</strong> Showing trends and changes over time (Continuous data).</p>
+                    </li>
+                    <li>
+                        <p><strong>Pie Chart:</strong> Showing parts of a whole (Percentages/Proportions).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="module-4-descriptive-statistics">MODULE 4: Descriptive Statistics</h2>
+        <p><em>Methods used to summarize the main features of a dataset.</em></p>
+        <h3 id="measures-of-central-tendency-the-center">1. Measures of Central Tendency (The Center)</h3>
+        <ul>
+            <li>
+                <p>Mean (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.56778em; vertical-align: 0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>): The mathematical average.</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>=</mo><mfrac><mrow><mo>∑</mo><mi>x</mi></mrow><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\bar{x} = \frac{\sum x}{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.56778em; vertical-align: 0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.113em; vertical-align: -0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.427em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span>
+                    </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position: relative; top: -0.000005em;">∑</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">x</span></span>
+                    </span>
+                    </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span>
+                    </span>
+                    </span>
+                    </span><span class="mclose nulldelimiter"></span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p><strong>Median:</strong> The middle value when data is ordered. (Best for skewed data).</p>
+            </li>
+            <li>
+                <p><strong>Mode:</strong> The most frequent value. (Useful for categorical data).</p>
+            </li>
+        </ul>
+        <h3 id="measures-of-dispersion-the-spread">2. Measures of Dispersion (The Spread)</h3>
+        <ul>
+            <li>
+                <p>Range: Difference between the highest and lowest score.</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mo>=</mo><mtext>Highest&nbsp;Value</mtext><mo>−</mo><mtext>Lowest&nbsp;Value</mtext></mrow><annotation encoding="application/x-tex">Range = \text{Highest Value} - \text{Lowest Value}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.87777em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.00773em;" class="mord mathnormal">R</span><span class="mord mathnormal">an</span><span style="margin-right: 0.03588em;" class="mord mathnormal">g</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord text"><span class="mord">Highest&nbsp;Value</span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord text"><span class="mord">Lowest&nbsp;Value</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p>Variance (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.814108em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>): The average of the squared differences from the Mean.</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mo>∑</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">s^2 = \frac{\sum (x - \bar{x})^2}{n - 1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.864108em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.864108em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.26044em; vertical-align: -0.76933em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.49111em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">1</span></span>
+                    </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position: relative; top: -0.000005em;">∑</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.76933em;"><span class=""></span></span>
+                    </span>
+                    </span>
+                    </span><span class="mclose nulldelimiter"></span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p>Standard Deviation (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span></span>
+                    </span>
+                    </span>
+                    </span> or <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">sd</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">d</span></span>
+                    </span>
+                    </span>
+                    </span>): The square root of the variance. Indicates how much scores deviate from the average.</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo>=</mo><msqrt><mfrac><mrow><mo>∑</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac></msqrt></mrow><annotation encoding="application/x-tex">s = \sqrt{\frac{\sum (x - \bar{x})^2}{n - 1}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.44em; vertical-align: -0.77729em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.66271em;"><span class="svg-align" style="top: -4.4em;"><span class="pstrut" style="height: 4.4em;"></span><span class="mord" style="padding-left: 1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.427em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord">1</span></span>
+                    </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position: relative; top: -0.000005em;">∑</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.740108em;"><span class="" style="top: -2.989em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.76933em;"><span class=""></span></span>
+                    </span>
+                    </span>
+                    </span><span class="mclose nulldelimiter"></span></span>
+                    </span>
+                    </span><span class="" style="top: -3.62271em;"><span class="pstrut" style="height: 4.4em;"></span><span class="hide-tail" style="min-width: 1.02em; height: 2.48em;"><svg width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"></path></svg></span></span>
+                    </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.77729em;"><span class=""></span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p>Coefficient of Variation (CV): A percentage used to compare variability between datasets with different units.</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>V</mi><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><mi>s</mi><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mfrac><mo fence="true">)</mo></mrow><mo>×</mo><mn>100</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">CV = \left( \frac{s}{\bar{x}} \right) \times 100\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span style="margin-right: 0.07153em;" class="mord mathnormal">C</span><span style="margin-right: 0.22222em;" class="mord mathnormal">V</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1.836em; vertical-align: -0.686em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.10756em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                    </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span>
+                    </span>
+                    </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span>
+                    </span>
+                    </span>
+                    </span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top: 0em;"><span class="delimsizing size2">)</span></span>
+                    </span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">100%</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+            </li>
+        </ul>
+        <h3 id="measures-of-shape-the-pattern">3. Measures of Shape (The Pattern)</h3>
+        <ul>
+            <li>
+                <p>Skewness: Measures symmetry.</p>
+                <p><img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTDKn8Ls6948TLcZ_WrF63WcPVCp7G6NGFPnaBoVl3CNbSoNl9iHauBkktSLZb9CitHjm1qz0O9_4AWLqwbRuVN89-qA5lz2js1KXlet_IEBQvxx5I" alt="Image of positive negative and normal skewness distribution curves"></p>
+                <ul>
+                    <li>
+                        <p><strong>Normal:</strong> 0 (Symmetrical).</p>
+                    </li>
+                    <li>
+                        <p><strong>Positive Skew:</strong> Tail extends to the <strong>Right</strong> (Low scores are common).</p>
+                    </li>
+                    <li>
+                        <p><strong>Negative Skew:</strong> Tail extends to the <strong>Left</strong> (High scores are common).</p>
+                    </li>
+                    <li>
+                        <p>Formula (Pearson’s coefficient of skewness):</p>
+                        <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>k</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>−</mo><mover accent="true"><mi>x</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow><mi>s</mi></mfrac></mrow><annotation encoding="application/x-tex">Sk = \frac{3(\bar{x} - \tilde{x})}{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.05764em;" class="mord mathnormal">S</span><span style="margin-right: 0.03148em;" class="mord mathnormal">k</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.113em; vertical-align: -0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.427em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span>
+                            </span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">3</span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.66786em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3.35em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">~</span></span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span><span class="mclose">)</span></span>
+                            </span>
+                            </span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span>
+                            </span>
+                            </span>
+                            </span><span class="mclose nulldelimiter"></span></span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                        </p>
+                        <p>(Where <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.56778em; vertical-align: 0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.56778em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">ˉ</span></span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span> is Mean and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66786em; vertical-align: 0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.66786em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord mathnormal">x</span></span><span class="" style="top: -3.35em;"><span class="pstrut" style="height: 3em;"></span><span class="accent-body" style="left: -0.22222em;"><span class="mord">~</span></span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span>
+                            </span> is Median)</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Kurtosis:</strong> Measures peakedness/tailedness.</p>
+                <ul>
+                    <li>
+                        <p><strong>Leptokurtic (</strong><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">&gt;3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span>
+                            </span>
+                            </span>
+                            </span><strong>):</strong> High peak, heavy tails (More outliers).</p>
+                    </li>
+                    <li>
+                        <p><strong>Mesokurtic (</strong><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span>
+                            </span>
+                            </span>
+                            </span><strong>):</strong> Normal bell shape.</p>
+                    </li>
+                    <li>
+                        <p><strong>Platykurtic (</strong><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">&lt;3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span>
+                            </span>
+                            </span>
+                            </span><strong>):</strong> Flat peak, light tails (Fewer outliers).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="module-5-inferential-analysis">MODULE 5: Inferential Analysis</h2>
+        <h3 id="tests-for-significant-difference-comparing-groups">1. Tests for Significant Difference (Comparing Groups)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Comparison Scenario</th>
+                    <th>Parametric Test (Normal Data)</th>
+                    <th>Non-Parametric Test (Skewed Data)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1 Group vs. Standard</strong></td>
+                    <td>One-Sample t-test</td>
+                    <td><em>N/A</em> (Sign Test / Wilcoxon Signed-Rank)</td>
+                </tr>
+                <tr>
+                    <td><strong>2 Related Groups</strong></td>
+                    <td>Paired Samples t-test</td>
+                    <td>Wilcoxon Signed-Ranks Test</td>
+                </tr>
+                <tr>
+                    <td><strong>2 Independent Groups</strong></td>
+                    <td>Independent Samples t-test</td>
+                    <td>Mann-Whitney U Test</td>
+                </tr>
+                <tr>
+                    <td><strong>3+ Independent Groups</strong></td>
+                    <td>One-Way ANOVA</td>
+                    <td>Kruskal-Wallis H Test</td>
+                </tr>
+                <tr>
+                    <td><strong>Interaction Effects</strong></td>
+                    <td>Factorial ANOVA</td>
+                    <td><em>N/A</em></td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 id="tests-for-relationship-correlation">2. Tests for Relationship (Correlation)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Variables Involved</th>
+                    <th>Appropriate Test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Continuous vs. Continuous</strong></td>
+                    <td>Pearson’s r</td>
+                </tr>
+                <tr>
+                    <td><strong>Ordinal vs. Ordinal</strong></td>
+                    <td>Spearman’s Rho</td>
+                </tr>
+                <tr>
+                    <td><strong>Nominal vs. Nominal</strong></td>
+                    <td>Chi-Square / Phi Coefficient / Cramer’s V</td>
+                </tr>
+                <tr>
+                    <td><strong>Nominal vs. Continuous</strong></td>
+                    <td>Point Biserial Correlation</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 id="regression-analysis-prediction">3. Regression Analysis (Prediction)</h3>
+        <p>Used to predict the value of a dependent variable based on an independent variable.</p>
+        <ul>
+            <li>
+                <p>Simple Linear Regression Equation:</p>
+                <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">y = bx + a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.03588em;" class="mord mathnormal">y</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">a</span></span>
+                    </span>
+                    </span>
+                    </span>
+                    </span>
+                </p>
+                <p>(Where <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.03588em;" class="mord mathnormal">y</span></span>
+                    </span>
+                    </span>
+                    </span> is the predicted value, <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">b</span></span>
+                    </span>
+                    </span>
+                    </span> is the slope/coefficient, <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">x</span></span>
+                    </span>
+                    </span>
+                    </span> is the predictor, and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">a</span></span>
+                    </span>
+                    </span>
+                    </span> is the intercept)</p>
+            </li>
+        </ul>
+        <h3 id="interpreting-findings">4. Interpreting Findings</h3>
+        <ul>
+            <li>
+                <p><strong>p-value &lt; 0.05:</strong> <strong>Significant.</strong> (Reject the Null Hypothesis).</p>
+            </li>
+            <li>
+                <p><strong>p-value &gt; 0.05:</strong> <strong>Not Significant.</strong> (Accept the Null Hypothesis).</p>
+            </li>
+            <li>
+                <p><strong>Important Note:</strong> Correlation does <strong>not</strong> imply causation. Just because two things are related doesn’t mean one caused the other.</p>
+            </li>
+        </ul>
+        <h2 id="module-6-ethical-use-of-data">MODULE 6: Ethical Use of Data</h2>
+        <h3 id="definition">1. Definition</h3>
+        <ul>
+            <li><strong>Ethics:</strong> The discipline dealing with what is morally good and bad, and right and wrong.</li>
+        </ul>
+        <h3 id="core-ethical-principles">2. Core Ethical Principles</h3>
+        <ul>
+            <li>
+                <p><strong>Respect for Persons:</strong> Treating individuals with autonomy and dignity.</p>
+            </li>
+            <li>
+                <p><strong>Beneficence &amp; Non-Maleficence:</strong> Maximizing benefits and minimizing harm.</p>
+            </li>
+            <li>
+                <p><strong>Justice &amp; Fairness:</strong> Ensuring equitable distribution of benefits and risks.</p>
+            </li>
+            <li>
+                <p><strong>Transparency &amp; Accountability:</strong> Being open about methods, funding, and findings.</p>
+            </li>
+        </ul>
+        <h3 id="informed-consent">3. Informed Consent</h3>
+        <p>Participants must understand the study before agreeing.</p>
+        <ul>
+            <li>
+                <p>Clear purpose.</p>
+            </li>
+            <li>
+                <p>Voluntary participation (no coercion).</p>
+            </li>
+            <li>
+                <p>Right to withdraw at any time.</p>
+            </li>
+            <li>
+                <p>No deception.</p>
+            </li>
+        </ul>
+        <h3 id="privacy--confidentiality">4. Privacy &amp; Confidentiality</h3>
+        <ul>
+            <li>
+                <p><strong>Data Privacy Act (RA 10173):</strong> Legal framework protecting personal data.</p>
+            </li>
+            <li>
+                <p><strong>Best Practices:</strong> Anonymize datasets, use encryption, and collect only necessary data.</p>
+            </li>
+        </ul>
+        <h3 id="ethical-data-analysis">5. Ethical Data Analysis</h3>
+        <ul>
+            <li>
+                <p><strong>Avoid Manipulation:</strong> Do not alter data to fit a desired outcome (“p-hacking”).</p>
+            </li>
+            <li>
+                <p><strong>Handle Outliers Properly:</strong> Investigate them; do not just delete them to clean the curve.</p>
+            </li>
+            <li>
+                <p><strong>Report Limitations:</strong> Be honest about what the study <em>didn’t</em> cover or where it might be weak.</p>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
